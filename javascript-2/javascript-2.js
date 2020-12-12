@@ -36,6 +36,10 @@ let foods = [
 */
 
 //CODE HERE
+foods.forEach(function(element, index){
+    foods[index].calories = (foods[index].carbs * 4) + (foods[index].protein * 4) + (foods[index].fat * 9);
+});
+
 
 //////////////////////////////////PROBLEMS 2-4//////////////////////////////////
 /*
@@ -81,6 +85,11 @@ const products = [
 */
 
 //CODE HERE
+let saleProducts = products.map(function(element){
+  element.price = element.price - (element.price * .25)
+  return ({name: element.name, color: element.color, price: element.price})
+});
+
 
 ////////////////////PROBLEM 3////////////////////
 /*
@@ -91,6 +100,18 @@ const products = [
 */
 
 //CODE HERE
+// let blueProducts = saleProducts.filter(function(element){
+//   if (element.color === 'blue'){
+//     return element;
+//   }
+// });
+
+let blueProducts = saleProducts.filter(function(element){
+  if (element.color.includes('blue')){
+    return ({name: element.name, color: element.color, price: element.price})
+  }
+});
+
 
 ////////////////////PROBLEM 4////////////////////
 /*
@@ -100,6 +121,10 @@ const products = [
 */
 
 //CODE HERE
+let orderTotal = blueProducts.reduce(function(acc, curr){
+  return acc + curr.price;
+}, 0);
+
 
 //////////////////////////////////PROBLEMS 5-8//////////////////////////////////
 /*
@@ -130,6 +155,8 @@ const shippingInfo = {
 */
 
 //CODE HERE
+let helensInfo = Object.assign(contactInfo, shippingInfo);
+
 
 ////////////////////PROBLEM 6////////////////////
 /*
@@ -139,6 +166,10 @@ const shippingInfo = {
 */
 
 //CODE HERE
+let ellensInfo = {...helensInfo};
+ellensInfo.name = 'Ellen';
+ellensInfo.email = 'ellen@email.com';
+
 
 ////////////////////PROBLEM 7////////////////////
 /* 
@@ -146,6 +177,8 @@ const shippingInfo = {
 */
 
 //CODE HERE
+let {email} = ellensInfo;
+
 
 ////////////////////PROBLEM 8////////////////////
 /*
@@ -154,6 +187,8 @@ const shippingInfo = {
 */
 
 //CODE HERE
+let {state, zipCode} = shippingInfo;
+
 
 //////////////////////////////////PROBLEMS 9-11//////////////////////////////////
 /*
@@ -216,6 +251,8 @@ const userInfo = {
 */
 
 //CODE HERE
+shouldAlert = userInfo.settings.alerts;
+
 
 ////////////////////PROBLEM 10////////////////////
 /*
@@ -224,6 +261,8 @@ const userInfo = {
 */
 
 //CODE HERE
+topic = userInfo.topics[3];
+
 
 ////////////////////PROBLEM 11////////////////////
 /*
@@ -232,6 +271,8 @@ const userInfo = {
 */
 
 //CODE HERE
+commenterId = userInfo.comments[1].responses[0].userId;
+
 
 ////////////////////PROBLEM 12////////////////////
 /*
@@ -251,6 +292,21 @@ const userInfo = {
 */
 
 //CODE HERE
+let person = {
+  name: 'Kaladin',
+  age: 21,
+  jobs: ['Bridgeman', 'Bodyguard', 'High Marshall'],
+  birthday: function(){
+    this.age += 1;
+  },
+  favorites: {
+    color: 'Black',
+    number: 10,
+    book: 'The Way of Kings',
+  },
+  kids: [{name: 'Adolin Jr.', age: 5}, {name: 'Syl', age: 2}]
+};
+
 
 //////////////////////////////////PROBLEMS 13-14//////////////////////////////////
 /*
@@ -273,10 +329,10 @@ const workout = {
   },
 }
 
-//let context1 = myFunc
+// let context1 = myFunc
 //let context1 = window
 //let context1 = global
-// let context1 = workout
+let context1 = workout
 
 ////////////////////PROBLEM 14////////////////////
 /*
@@ -288,7 +344,7 @@ function myFunc() {
   return this
 }
 
-//let context2 = myFunc
-// let context2 = window
+// let context2 = myFunc
+let context2 = window
 //let context2 = global
 //let context2 = workout
